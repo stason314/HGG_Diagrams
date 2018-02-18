@@ -1,4 +1,4 @@
-package com.stanProjcts.HGG;
+package com.stanProjcts.HGG.Starters;
 
 import javax.swing.*;
 
