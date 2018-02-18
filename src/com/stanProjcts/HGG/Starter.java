@@ -1,9 +1,20 @@
 package com.stanProjcts.HGG;
 
+import javax.swing.*;
+
 public class Starter {
 
 
     public static void main(String[] args){
-        //now we can work
+        WorkPanel workPanel = new WorkPanel();
+
+        JFrame jFrame = new JFrame("Diagrams");
+        jFrame.setDefaultCloseOperation(jFrame.EXIT_ON_CLOSE);
+        jFrame.setContentPane(workPanel);
+        jFrame.pack();
+        jFrame.setLocationRelativeTo(null);
+        jFrame.setVisible(true);
+        workPanel.start();
+
     }
 }
