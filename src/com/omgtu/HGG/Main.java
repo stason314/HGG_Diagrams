@@ -2,10 +2,10 @@ package com.omgtu.HGG;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -13,6 +13,7 @@ import java.io.IOException;
 public class Main extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
+    private Scene scene;
 
     @Override
     public void start(Stage primaryStage) {
@@ -20,8 +21,8 @@ public class Main extends Application {
         this.primaryStage.setTitle("Diagram maker");
 
         initRootLayout();
-        showMainScene();
-       // showLeftBar();
+        showCanvasScene();
+        showLeftBar();
     }
 
     /**
@@ -37,16 +38,17 @@ public class Main extends Application {
             // Отображаем сцену, содержащую корневой макет.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public void showMainScene() {
+    private void showCanvasScene() {
         try {
             // Загружаем сведения об адресатах.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("Views/MainScene.fxml"));
+            loader.setLocation(Main.class.getResource("Views/CanvasScene.fxml"));
             AnchorPane imageView = loader.load();
             // Помещаем сведения об адресатах в центр корневого макета.
             rootLayout.setCenter(imageView);
@@ -54,12 +56,12 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-    public void showLeftBar() {
+    private void showLeftBar() {
         try {
             // Загружаем сведения об адресатах.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("Views/LeftBarProps.fxml"));
-            AnchorPane leftBar = loader.load();
+            VBox leftBar = loader.load();
             rootLayout.setLeft(leftBar);
         } catch (IOException e) {
             e.printStackTrace();
